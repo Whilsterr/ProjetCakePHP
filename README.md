@@ -1,5 +1,10 @@
 # Projet Web Iut Info module Web 2020
 
+Groupe 5:
+
+Matteo De La Fuente
+Julien Leveneur
+
 ## Récupération du projet
 
 Pour récuperer ce projet, vous pouvez le cloner grâce a la commande :
