@@ -1,9 +1,10 @@
 # Projet Web Iut Info module Web 2020
 
-Groupe 5:
+Groupe 5/3:
 
-Matteo De La Fuente
-Julien Leveneur
+Matteo De La Fuente (5)
+Julien Leveneur (5)
+Angélique Coune (3)
 
 ## Récupération du projet
 
