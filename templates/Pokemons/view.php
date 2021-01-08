@@ -9,12 +9,7 @@
     <div class="column-responsive column-80">
         <div class="pokemons view content">
             <h3><?= h($pokemon->name) ?></h3>
-            <table>
-                <tr>
-                    <th><?= __('Default Front Sprite Url') ?></th>
-                    <td><?= h($pokemon->default_front_sprite_url) ?></td>
-                </tr>
-            </table>
+            <img src="<?php echo $pokemon->default_front_sprite_url ?>"></img>
             <div class="related">
                 <h4><?= __('Related Pokemon Stats') ?></h4>
                 <?php if (!empty($pokemon->pokemon_stats)) : ?>
