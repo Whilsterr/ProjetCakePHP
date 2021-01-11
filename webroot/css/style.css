@@ -7857,10 +7857,8 @@ div.snorlax {
     transform: translateY(-10px); }
 
 img {
-  max-height: 150px;
   margin: auto;
   display: inline-block; }
-
 h1,
 h2,
 h3,
@@ -7880,9 +7878,6 @@ h5 {
 .top-bar.expanded {
   background: #e3350d; }
 
-.poke-sprite img {
-  min-width: 180px;
-  min-height: 180px; }
 
 .footer-container {
   margin: 0 auto;
