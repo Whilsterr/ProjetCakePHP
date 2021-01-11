@@ -55,7 +55,7 @@
                      </div>
                  </div>
             </div>
-            <div id="carouselExampleControls" class="carousel slide card--<?= $pokemon->first_type ?> mt-5" data-ride="carousel">
+            <div id="view" class="carousel slide card--<?= $pokemon->first_type ?> mt-5" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img src=" <?= h($pokemon->default_front_sprite_url) ?>" class="d-block"></img>
@@ -67,11 +67,11 @@
                             <img src="<?= h($pokemon->shiny_front_sprite_url) ?>" class="d-block"></img>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" href="#view" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <a class="carousel-control-next" href="#view" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
