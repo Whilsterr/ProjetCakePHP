@@ -21,7 +21,7 @@ use PhpParser\Node\Stmt\Echo_;
                         $pokemons = TableRegistry::getTableLocator()->get('pokemons');
                         $query = $pokemons->find('all');
                         $query  ->select(['avg'=>$query->func()->avg('weight')])
-                                ->where(['pokemons.Id BETWEEN 386 AND 493']);
+                                ->where(['pokemons.Id BETWEEN 387 AND 493']);
                         foreach ($query as $row) {
                             $poids=$row->avg;
                         }
@@ -29,7 +29,7 @@ use PhpParser\Node\Stmt\Echo_;
                     ?>
                 </figure>
                 <figure class="card mt-5">
-                    <p>Nombre de pokémon de type Fées <span class="text-secondary">pour la génération 1,3 et 7:</span></p>
+                    <p>Nombre de pokémon de type Fées <span class="text-secondary">pour les générations 1,3 et 7:</span></p>
                     <?php 
                         //Requete pour la génération 1
                         $pokemons = TableRegistry::getTableLocator()->get('pokemons');
