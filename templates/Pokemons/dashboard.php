@@ -99,7 +99,7 @@ use PhpParser\Node\Stmt\Echo_;
                                     ->order(['stats.value'=>'DESC']);
                         ?>
                         <tr>
-                            <th><?= __('Pokémon') ?></th>
+                            <th><?= __('Pokémon les plus rapides') ?></th>
                             <th><?= __('Rang') ?></th>
                         </tr>
                         <?php 
