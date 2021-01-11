@@ -55,7 +55,7 @@ use PhpParser\Node\Stmt\Echo_;
                                     'table' => 'pokemon_types',
                                     'type' => 'INNER',
                                     'conditions' => 'types.pokemon_id = pokemons.id'],])
-                                ->where(['pokemons.Id BETWEEN 1 AND 151'])
+                                ->where(['pokemons.Id BETWEEN 252 AND 386'])
                                 ->andWhere(['types.type_id=10']);
         
                         foreach ($query3 as $row) {
@@ -70,7 +70,7 @@ use PhpParser\Node\Stmt\Echo_;
                                     'table' => 'pokemon_types',
                                     'type' => 'INNER',
                                     'conditions' => 'types.pokemon_id = pokemons.id'],])
-                                ->where(['pokemons.Id BETWEEN 1 AND 151'])
+                                ->where(['pokemons.Id BETWEEN 722 AND 809'])
                                 ->andWhere(['types.type_id=10']);
         
                         foreach ($query7 as $row) {
