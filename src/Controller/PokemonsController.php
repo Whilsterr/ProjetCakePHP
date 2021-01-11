@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -62,5 +63,17 @@ class PokemonsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    /**
+     * Dashboard method
+     *
+     * @return \Cake\Http\Response|null|void Renders view
+     */
+    public function dashboard()
+    {
+
+        $pokemons = $this->Pokemons->find('all')->contain(['PokemonStats.Stats', 'PokemonTypes.Types']);
+        $this->set(compact('pokemons'));
     }
 }
