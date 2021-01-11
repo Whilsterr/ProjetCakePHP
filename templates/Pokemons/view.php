@@ -5,13 +5,13 @@
  * @var \App\Model\Entity\Pokemon $pokemon
  */
 ?>
+
 <div class="row">
     <div class="column-responsive column-80">
         <div class="pokemons view content">
             <h3><?= h($pokemon->name) ?></h3>
             <img src="<?php echo $pokemon->default_front_sprite_url ?>"></img>
             <div class="related">
-                <h4><?= __('Related Pokemon Stats') ?></h4>
                 <?php if (!empty($pokemon->pokemon_stats)) : ?>
                     <div class="table-responsive">
                         <table>
@@ -32,22 +32,43 @@
                 <?php endif; ?>
             </div>
             <div class="related">
-                <h4><?= __('Related Pokemon Types') ?></h4>
                 <?php if (!empty($pokemon->pokemon_types)) : ?>
-                    <div class="table-responsive">
-                        <table>
-                            <tr>
-                                <th><?= __('Type') ?></th>
-                            </tr>
-                            <?php foreach ($pokemon->pokemon_types as $pokemonTypes) : ?>
-                                <tr>
-                                    <td><?= h($pokemonTypes->type->name) ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </table>
+                    <div class="card__caption">
+                        <h3 class="card__type card--<?= $pokemon->first_type ?>">
+                            <?= $pokemon->first_type ?>
+                        </h3>
+
+                        <?php if ($pokemon->has_second_type) : ?>
+                            <h3 class=" card__second_type card--<?= $pokemon->second_type ?>">
+                                <?= $pokemon->second_type ?>
+                            </h3>
+                        <?php endif ?>
                     </div>
                 <?php endif; ?>
+                <div id="carouselExampleControls" class="carousel slide bg-third" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src=" <?php echo $pokemon->default_front_sprite_url ?>" class="d-block"></img>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<?php echo $pokemon->default_back_sprite_url ?>" class="d-block"></img>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<?php echo $pokemon->shiny_front_sprite_url ?>" class="d-block"></img>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
