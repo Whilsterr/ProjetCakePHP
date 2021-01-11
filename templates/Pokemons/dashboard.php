@@ -14,9 +14,9 @@ use PhpParser\Node\Stmt\Echo_;
     <div class="column-responsive column-80">
         <div class="pokemons view content">
             <div class="mt-5">
-                <h1>Dashboard <span class="text-secondary">de la 4ème génération</span></h1>
+                <h1>Dashboard</h1>
                 <figure class="card">
-                    <p>Poids Moyen</p>
+                    <p>Poids Moyen <span class="text-secondary">de la 4ème génération:</span></p>
                     <?php 
                         $pokemons = TableRegistry::getTableLocator()->get('pokemons');
                         $query = $pokemons->find('all');
@@ -29,7 +29,7 @@ use PhpParser\Node\Stmt\Echo_;
                     ?>
                 </figure>
                 <figure class="card mt-5">
-                    <p>Nombre de pokémon de type Fées</p>
+                    <p>Nombre de pokémon de type Fées <span class="text-secondary">pour la génération 1,3 et 7:</span></p>
                     <?php 
                         //Requete pour la génération 1
                         $pokemons = TableRegistry::getTableLocator()->get('pokemons');
