@@ -5,18 +5,25 @@
  * @var \App\Model\Entity\Pokemon $pokemon
  */
 ?>
+<style>
+    .conteneur{
+        text-align: center;
+        display: table-cell;
+         vertical-align: middle;
+    }
+</style>
 
 <div class="row">
     <div class="column-responsive column-80">
         <div class="pokemons view content">
             <div class="container mt-5">
                 <div class="row">
-                    <div class="col-sm">
-                        <img style="height:600px; width:600px" src="<?= h($pokemon->default_front_sprite_url) ?>"></img>                
+                    <div class="col-sm conteneur">
+                        <img style="height:150px; width:150px" src="<?= h($pokemon->default_front_sprite_url) ?>"></img>                
                     </div>
                     <div class="col-sm">
-                         <h3><?= h($pokemon->name) ?></h3>
-                         <div class="related">
+                         <h3 class=""><?= h($pokemon->name) ?></h3>
+                         <div class="related mt-5">
                             <?php if (!empty($pokemon->pokemon_types)) : ?>
                             <div class="card__caption">
                                 <h3 class="card__type card--<?= $pokemon->first_type ?>">
@@ -48,7 +55,7 @@
                      </div>
                  </div>
             </div>
-            <div id="carouselExampleControls" class="carousel slide bg-third" data-ride="carousel">
+            <div id="carouselExampleControls" class="carousel slide card--<?= $pokemon->first_type ?> mt-5" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img src=" <?= h($pokemon->default_front_sprite_url) ?>" class="d-block"></img>
