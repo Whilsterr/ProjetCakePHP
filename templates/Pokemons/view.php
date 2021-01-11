@@ -9,52 +9,55 @@
 <div class="row">
     <div class="column-responsive column-80">
         <div class="pokemons view content">
-            <h3><?= h($pokemon->name) ?></h3>
-            <img src="<?php echo $pokemon->default_front_sprite_url ?>"></img>
-            <div class="related">
-                <?php if (!empty($pokemon->pokemon_stats)) : ?>
-                    <div class="table-responsive">
-                        <table>
-                            <tr>
-                                <th><?= __('Stat') ?></th>
-                                <th><?= __('Value') ?></th>
-                            </tr>
-                            <?php foreach ($pokemon->pokemon_stats as $pokemonStats) : ?>
-                                <tr>
-                                    <td>
-                                        <?= h($pokemonStats->stat->name) ?>
-                                    </td>
-                                    <td><?= h($pokemonStats->value) ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </table>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-sm">
+                        <img style="height:600px; width:600px" src="<?= h($pokemon->default_front_sprite_url) ?>"></img>                
                     </div>
-                <?php endif; ?>
-            </div>
-            <div class="related">
-                <?php if (!empty($pokemon->pokemon_types)) : ?>
-                    <div class="card__caption">
-                        <h3 class="card__type card--<?= $pokemon->first_type ?>">
-                            <?= $pokemon->first_type ?>
-                        </h3>
-
-                        <?php if ($pokemon->has_second_type) : ?>
-                            <h3 class=" card__second_type card--<?= $pokemon->second_type ?>">
-                                <?= $pokemon->second_type ?>
-                            </h3>
+                    <div class="col-sm">
+                         <h3><?= h($pokemon->name) ?></h3>
+                         <div class="related">
+                            <?php if (!empty($pokemon->pokemon_types)) : ?>
+                            <div class="card__caption">
+                                <h3 class="card__type card--<?= $pokemon->first_type ?>">
+                                    <?= $pokemon->first_type ?>
+                                </h3>
+                                <?php if ($pokemon->has_second_type) : ?>
+                                <h3 class=" card__second_type card--<?= $pokemon->second_type ?>">
+                                    <?= $pokemon->second_type ?>
+                                </h3>
                         <?php endif ?>
                     </div>
                 <?php endif; ?>
-                <div id="carouselExampleControls" class="carousel slide bg-third" data-ride="carousel">
+                         <div class="related">
+                            <?php if (!empty($pokemon->pokemon_stats)) : ?>
+                                <div class="table-responsive">
+                                    <table>
+                                         <?php foreach ($pokemon->pokemon_stats as $pokemonStats) : ?>
+                                        <tr>
+                                            <td>
+                                                <?= h($pokemonStats->stat->name) ?>
+                                            </td>
+                                            <td><?= h($pokemonStats->value) ?></td>
+                                        </tr>
+                                        <?php endforeach; ?>
+                                    </table>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                     </div>
+                 </div>
+            </div>
+            <div id="carouselExampleControls" class="carousel slide bg-third" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src=" <?php echo $pokemon->default_front_sprite_url ?>" class="d-block"></img>
+                            <img src=" <?= h($pokemon->default_front_sprite_url) ?>" class="d-block"></img>
                         </div>
                         <div class="carousel-item">
-                            <img src="<?php echo $pokemon->default_back_sprite_url ?>" class="d-block"></img>
+                            <img src="<?= h($pokemon->default_back_sprite_url) ?>" class="d-block"></img>
                         </div>
                         <div class="carousel-item">
-                            <img src="<?php echo $pokemon->shiny_front_sprite_url ?>" class="d-block"></img>
+                            <img src="<?= h($pokemon->shiny_front_sprite_url) ?>" class="d-block"></img>
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
