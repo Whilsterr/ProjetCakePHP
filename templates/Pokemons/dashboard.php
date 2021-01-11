@@ -13,70 +13,101 @@ use PhpParser\Node\Stmt\Echo_;
 <div class="row">
     <div class="column-responsive column-80">
         <div class="pokemons view content">
-            <div>
-                <h1>Dashboard</h1>
+            <div class="mt-5">
+                <h1>Dashboard <span class="text-secondary">de la 4ème génération</span></h1>
                 <figure class="card">
                     <p>Poids Moyen</p>
-
+                    <?php 
+                        $pokemons = TableRegistry::getTableLocator()->get('pokemons');
+                        $query = $pokemons->find('all');
+                        $query  ->select(['avg'=>$query->func()->avg('weight')])
+                                ->where(['pokemons.Id BETWEEN 386 AND 493']);
+                        foreach ($query as $row) {
+                            $poids=$row->avg;
+                        }
+                        echo "<h1>$poids</h1>";
+                    ?>
                 </figure>
-                <figure class="card">
+                <figure class="card mt-5">
                     <p>Nombre de pokémon de type Fées</p>
-                    <?php
-                    $count = 0;
-                    $count1 = 0;
-                    $count2 = 0;
-                    $pokemons = TableRegistry::getTableLocator()->get('pokemon_types');
-                    $query = $pokemons->find();
-                    $query->select('type_id')
-                        ->from('pokemon_types')
-                        ->where(['type_id' => 10])
-                        ->andWhere([
-                            'pokemon_id > ' => 1,
-                            'pokemon_id <' => 151
-                        ]);
-                    foreach ($query as $type_id) {
-                        $count++;
-                    }
-                    $pokemons = TableRegistry::getTableLocator()->get('pokemon_types');
-                    $query1 = $pokemons->find();
-                    $query1->select('type_id')
-                        ->from('pokemon_types')
-                        ->where(['type_id' => 10])
-                        ->andWhere([
-                            'pokemon_id > ' => 252,
-                            'pokemon_id <' => 386
-                        ]);
-                    foreach ($query1 as $type_id) {
-                        $count1++;
-                    }
-                    $pokemons = TableRegistry::getTableLocator()->get('pokemon_types');
-                    $query2 = $pokemons->find();
-                    $query2->select('type_id')
-                        ->from('pokemon_types')
-                        ->where(['type_id' => 10])
-                        ->andWhere([
-                            'pokemon_id > ' => 722,
-                            'pokemon_id <' => 809
-                        ]);
-                    foreach ($query2 as $type_id) {
-                        $count2++;
-                    }
-                    $res = $count + $count1 + $count2;
-                    echo "<h1>$res</h1>";
+                    <?php 
+                        //Requete pour la génération 1
+                        $pokemons = TableRegistry::getTableLocator()->get('pokemons');
+                        $query1 = $pokemons->find('all');
+                        $query1  ->select(['count'=>$query1->func()->count('pokemons.id')])
+                                 ->join([
+                                    'types' => [
+                                    'table' => 'pokemon_types',
+                                    'type' => 'INNER',
+                                    'conditions' => 'types.pokemon_id = pokemons.id'],])
+                                ->where(['pokemons.Id BETWEEN 1 AND 151'])
+                                ->andWhere(['types.type_id=10']);
+                                        
+                        foreach ($query1 as $row) {
+                            $count1= $row->count;
+                         }
+                        //Requete pour la génération 3
+                        $pokemons = TableRegistry::getTableLocator()->get('pokemons');
+                        $query3 = $pokemons->find('all');
+                        $query3  ->select(['count'=>$query3->func()->count('pokemons.id')])
+                                 ->join([
+                                    'types' => [
+                                    'table' => 'pokemon_types',
+                                    'type' => 'INNER',
+                                    'conditions' => 'types.pokemon_id = pokemons.id'],])
+                                ->where(['pokemons.Id BETWEEN 1 AND 151'])
+                                ->andWhere(['types.type_id=10']);
+        
+                        foreach ($query3 as $row) {
+                            $count2=$row->count;
+                         }
+                        //Requete pour la génération 7
+                        $pokemons = TableRegistry::getTableLocator()->get('pokemons');
+                        $query7 = $pokemons->find('all');
+                        $query7  ->select(['count'=>$query7->func()->count('pokemons.id')])
+                                 ->join([
+                                    'types' => [
+                                    'table' => 'pokemon_types',
+                                    'type' => 'INNER',
+                                    'conditions' => 'types.pokemon_id = pokemons.id'],])
+                                ->where(['pokemons.Id BETWEEN 1 AND 151'])
+                                ->andWhere(['types.type_id=10']);
+        
+                        foreach ($query7 as $row) {
+                            $count3= $row->count;
+                         }
+                         $res=$count1+$count2+$count3;
+                         echo "<h1>$res</h1>";
                     ?>
                 </figure>
             </div>
-            <div class="related">
+            <div class="related mt-5">
                 <div class="table-responsive">
                     <table>
+                        <?php 
+                            $pokemons = TableRegistry::getTableLocator()->get('pokemons');
+
+                            $query = $pokemons->find('all');
+                            $query  ->select('name')
+                                    ->join([
+                                        'stats' => [
+                                        'table' => 'pokemon_stats',
+                                        'type' => 'INNER',
+                                        'conditions' => 'stats.pokemon_id = pokemons.id'],])
+                                    ->Where(['stats.stat_id=6'])
+                                    ->limit(10)
+                                    ->order(['stats.value'=>'DESC']);
+                        ?>
                         <tr>
-                            <th><?= __('Stat') ?></th>
-                            <th><?= __('Value') ?></th>
+                            <th><?= __('Pokémon') ?></th>
+                            <th><?= __('Rang') ?></th>
                         </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        <?php 
+                            $count=0;
+                            foreach($query as $row){ 
+                                $count++;
+                                echo "<tr><td>$row->name</td><td>n°$count<td><tr>";
+                            } ?>
                     </table>
                 </div>
             </div>
